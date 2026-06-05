@@ -17,7 +17,7 @@ export default function CartToast() {
 
   return (
     <div className="fixed top-24 right-4 z-[100] animate-slide-in">
-      <div className="bg-white/90 backdrop-blur-xl backdrop-saturate-150 border border-white/20 rounded-2xl shadow-2xl shadow-black/5 p-4 flex items-center gap-3 min-w-[280px]">
+      <div className="bg-white/90 backdrop-blur-xl backdrop-saturate-150 border border-white/20 border-l-4 border-l-brand-fresh rounded-2xl shadow-xl shadow-black/15 ring-1 ring-black/5 p-4 flex items-center gap-3 min-w-[280px]">
         <div className="w-10 h-10 rounded-xl bg-brand-fresh/10 flex items-center justify-center">
           <CheckCircle size={24} className="text-brand-fresh" weight="fill" />
         </div>
