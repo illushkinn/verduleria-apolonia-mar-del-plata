@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import CartBadge from "../components/cart/CartBadge.jsx";
+import { Analytics } from '@vercel/analytics/react';
 
 export interface Props {
   title: string;
@@ -48,6 +49,7 @@ const ogImage = Astro.props.ogImage || "/icons/icon-512.svg";
     />
 
     <title>{title} | Apolonia</title>
+    <Analytics client:load />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Header / Nav -->
@@ -127,7 +129,7 @@ const ogImage = Astro.props.ogImage || "/icons/icon-512.svg";
               <li>Calle Alem, Playa Grande</li>
               <li>Mar del Plata, Argentina</li>
               <li>
-                <a href="#" class="text-brand-gold hover:text-brand-gold-light transition-colors">
+                <a href="https://wa.me/5492235833114" target="_blank" class="text-brand-gold hover:text-brand-gold-light transition-colors">
                   Pedí por WhatsApp →
                 </a>
               </li>
