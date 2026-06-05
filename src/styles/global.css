@@ -132,6 +132,11 @@ body {
   animation: pulse-soft 2s ease-in-out infinite;
 }
 
+/* Custom easing for side nav */
+.duration-400 {
+  transition-duration: 400ms;
+}
+
 /* ─── Utility: line clamp ───────────────── ─ */
 .line-clamp-2 {
   display: -webkit-box;
