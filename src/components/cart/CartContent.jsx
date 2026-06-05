@@ -1,4 +1,5 @@
 import React from 'react';
+import { ShoppingCart, Basket, Trash, Truck } from '@phosphor-icons/react';
 import { useCartStore } from '../../lib/cart-store';
 
 const WA_NUMBER = '5492235833114';
@@ -15,7 +16,9 @@ export default function CartContent() {
   if (items.length === 0) {
     return (
       <div className="text-center py-16">
-        <span className="text-6xl mb-6 block">🛒</span>
+        <div className="flex justify-center mb-6">
+          <ShoppingCart size={64} className="text-brand-charcoal-soft/30" />
+        </div>
         <h2 className="font-serif text-2xl font-bold text-brand-charcoal mb-2">
           Tu pedido está vacío
         </h2>
@@ -39,8 +42,8 @@ export default function CartContent() {
           key={item.id}
           className="flex items-center gap-4 bg-white p-4 rounded-[--radius-brand] shadow-sm border border-brand-cream-dark"
         >
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-cream-dark to-brand-cream flex items-center justify-center flex-shrink-0 text-2xl">
-            🍎
+          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-cream-dark to-brand-cream flex items-center justify-center flex-shrink-0">
+            <Basket size={28} className="text-brand-charcoal-soft/40" />
           </div>
           <div className="flex-1 min-w-0">
             <h4 className="font-serif font-semibold text-brand-charcoal">{item.nombre}</h4>
@@ -63,20 +66,20 @@ export default function CartContent() {
                   +
                 </button>
               </div>
-              <span className="font-bold text-brand-charcoal">
-                ${(item.precio * item.cantidad).toLocaleString('es-AR')}
-              </span>
             </div>
           </div>
-          <button
-            onClick={() => removeItem(item.id)}
-            className="p-2 text-brand-charcoal-soft/40 hover:text-brand-terracotta transition-colors"
-            aria-label="Eliminar"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
-            </svg>
-          </button>
+          <div className="flex flex-col items-end gap-2">
+            <span className="font-bold text-brand-charcoal">
+              ${(item.precio * item.cantidad).toLocaleString('es-AR')}
+            </span>
+            <button
+              onClick={() => removeItem(item.id)}
+              className="p-1 text-brand-charcoal-soft/40 hover:text-brand-terracotta transition-colors"
+              aria-label="Eliminar"
+            >
+              <Trash size={16} />
+            </button>
+          </div>
         </div>
       ))}
 
@@ -87,8 +90,11 @@ export default function CartContent() {
             <span>Subtotal</span>
             <span>${total.toLocaleString('es-AR')}</span>
           </div>
-          <div className="flex justify-between text-sm text-brand-fresh">
-            <span>🚚 Delivery</span>
+          <div className="flex justify-between text-sm text-brand-fresh items-center">
+            <span className="flex items-center gap-1">
+              <Truck size={16} />
+              Delivery
+            </span>
             <span>Sin cargo</span>
           </div>
           <div className="border-t border-brand-cream-dark pt-3 flex justify-between font-bold text-lg text-brand-charcoal">

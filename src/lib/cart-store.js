@@ -20,6 +20,7 @@ export const useCartStore = create(
     (set, get) => ({
       // Estado
       items: [],
+      toast: { open: false, productName: '' },
 
       // Acciones
       addItem: (producto) => {
@@ -71,6 +72,10 @@ export const useCartStore = create(
         set({ items: [] });
       },
 
+      // Toast
+      showToast: (productName) => set({ toast: { open: true, productName } }),
+      hideToast: () => set({ toast: { open: false, productName: '' } }),
+
       // Computed
       getTotal: () => {
         return get().items.reduce(
@@ -86,21 +91,37 @@ export const useCartStore = create(
       // Generar mensaje para WhatsApp
       generateWhatsAppMessage: (telefono, notas = '') => {
         const items = get().items;
-        let mensaje = '🍎 *Pedido Apolonia*\n\n';
-        mensaje += '*Productos:*\n';
-
-        items.forEach((item) => {
-          mensaje += `• ${item.nombre} x${item.cantidad} — $${(item.precio * item.cantidad).toLocaleString('es-AR')}\n`;
+        const ahora = new Date();
+        const fecha = ahora.toLocaleString('es-AR', {
+          day: '2-digit', month: 'long', year: 'numeric',
+          hour: '2-digit', minute: '2-digit',
         });
 
-        mensaje += `\n*Total: $${get().getTotal().toLocaleString('es-AR')}*\n`;
+        let mensaje = '';
+        mensaje += '🍊 *NUEVO PEDIDO — Apolonia*\n';
+        mensaje += `📅 ${fecha}\n`;
+        mensaje += `─────────────────\n\n`;
 
-        if (notas) {
-          mensaje += `\n*Notas:* ${notas}`;
+        mensaje += '*📍 DETALLE DEL PEDIDO*\n';
+        mensaje += `━━━━━━━━━━━━━━━━\n`;
+
+        items.forEach((item, i) => {
+          const subtotal = item.precio * item.cantidad;
+          mensaje += `${i + 1}. ${item.nombre}\n`;
+          mensaje += `   ${item.cantidad} × $${item.precio.toLocaleString('es-AR')} = *$${subtotal.toLocaleString('es-AR')}*\n`;
+        });
+
+        mensaje += `\n━━━━━━━━━━━━━━━━\n`;
+        mensaje += `*TOTAL: $${get().getTotal().toLocaleString('es-AR')}*\n`;
+        mensaje += `━━━━━━━━━━━━━━━━\n\n`;
+
+        if (notas.trim()) {
+          mensaje += `*📝 Notas del cliente:*\n${notas.trim()}\n\n`;
         }
 
-        mensaje += '\n\n📍 *Delivery sin cargo*';
-        mensaje += '\n💬 ¿Confirmamos?';
+        mensaje += `*🚚 Delivery:* Sin cargo\n`;
+        mensaje += `*💳 Paga al recibir*\n\n`;
+        mensaje += `_Gracias por elegir Apolonia, nos contactamos a la brevedad._`;
 
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
         return url;
