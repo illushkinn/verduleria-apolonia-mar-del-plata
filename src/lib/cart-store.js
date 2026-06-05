@@ -98,11 +98,11 @@ export const useCartStore = create(
         });
 
         let mensaje = '';
-        mensaje += '🍊 *NUEVO PEDIDO — Apolonia*\n';
-        mensaje += `📅 ${fecha}\n`;
+        mensaje += '*NUEVO PEDIDO · Apolonia — Mar del Plata*\n';
+        mensaje += `${fecha}\n`;
         mensaje += `─────────────────\n\n`;
 
-        mensaje += '*📍 DETALLE DEL PEDIDO*\n';
+        mensaje += '*DETALLE DEL PEDIDO*\n';
         mensaje += `━━━━━━━━━━━━━━━━\n`;
 
         items.forEach((item, i) => {
@@ -116,11 +116,11 @@ export const useCartStore = create(
         mensaje += `━━━━━━━━━━━━━━━━\n\n`;
 
         if (notas.trim()) {
-          mensaje += `*📝 Notas del cliente:*\n${notas.trim()}\n\n`;
+          mensaje += `*Notas del cliente:*\n${notas.trim()}\n\n`;
         }
 
-        mensaje += `*🚚 Delivery:* Sin cargo\n`;
-        mensaje += `*💳 Paga al recibir*\n\n`;
+        mensaje += `*Delivery:* Sin cargo\n`;
+        mensaje += `*Paga al recibir*\n\n`;
         mensaje += `_Gracias por elegir Apolonia, nos contactamos a la brevedad._`;
 
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
