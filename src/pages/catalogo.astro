@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const categorias = ["Todas", "Frutas", "Verduras", "Verduras Finas", "Frutas Tropicales"];
+const productos = [
+  { nombre: "Frutilla de Coronda", categoria: "Frutas", precio: "$4.500", unidad: "kg", stock: 12, destacado: true },
+  { nombre: "Mango Petacón", categoria: "Frutas Tropicales", precio: "$6.800", unidad: "kg", stock: 8, destacado: true },
+  { nombre: "Naranja Ombligo", categoria: "Frutas", precio: "$2.800", unidad: "kg", stock: 25 },
+  { nombre: "Palta Hass", categoria: "Frutas", precio: "$5.200", unidad: "unidad", stock: 15 },
+  { nombre: "Limón Meyer", categoria: "Frutas", precio: "$2.500", unidad: "kg", stock: 30 },
+  { nombre: "Banana Ecuador", categoria: "Frutas", precio: "$2.200", unidad: "kg", stock: 20 },
+  { nombre: "Tomate Perita", categoria: "Verduras", precio: "$3.200", unidad: "kg", stock: 18, destacado: true },
+  { nombre: "Rúcula Fresca", categoria: "Verduras Finas", precio: "$2.200", unidad: "atado", stock: 10, destacado: true },
+  { nombre: "Radicheta Orgánica", categoria: "Verduras Finas", precio: "$2.500", unidad: "atado", stock: 7 },
+  { nombre: "Kale Crespo", categoria: "Verduras Finas", precio: "$2.800", unidad: "atado", stock: 5 },
+  { nombre: "Zapallo Anco", categoria: "Verduras", precio: "$2.000", unidad: "kg", stock: 15 },
+  { nombre: "Berenjena Negra", categoria: "Verduras", precio: "$3.000", unidad: "kg", stock: 12 },
+  { nombre: "Lechuga Mantecosa", categoria: "Verduras Finas", precio: "$1.800", unidad: "unidad", stock: 20 },
+  { nombre: "Cebolla Colorada", categoria: "Verduras", precio: "$1.500", unidad: "kg", stock: 35 },
+  { nombre: "Papa Spunta", categoria: "Verduras", precio: "$1.800", unidad: "kg", stock: 40 },
+  { nombre: "Batata", categoria: "Verduras", precio: "$2.000", unidad: "kg", stock: 25 },
+];
+---
+
+<Layout title="Catálogo — Frutas y Verduras">
+  <!-- Header -->
+  <section class="bg-gradient-to-br from-brand-red-dark to-brand-red py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="font-hand text-brand-gold-light text-lg mb-2 animate-fade-in-up">🛒 Catálogo</p>
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-4 animate-fade-in-up" style="animation-delay: 0.1s;">
+        Frutas y Verduras
+      </h1>
+      <p class="text-white/70 text-lg max-w-xl animate-fade-in-up" style="animation-delay: 0.2s;">
+        {productos.length} productos seleccionados para vos. Frescura garantizada.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="py-6 bg-white border-b border-brand-cream-dark sticky top-16 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap gap-2">
+        {categorias.map((cat) => (
+          <button class="px-4 py-2 text-sm font-medium rounded-full border border-brand-cream-dark text-brand-charcoal-soft hover:border-brand-red hover:text-brand-red transition-all cursor-pointer">
+            {cat}
+          </button>
+        ))}
+      </div>
+      <div class="mt-4">
+        <input
+          type="search"
+          placeholder="Buscá tu fruta o verdura..."
+          class="w-full px-4 py-3 bg-brand-cream rounded-[--radius-button] border border-brand-cream-dark text-sm placeholder:text-brand-charcoal-soft/50 focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="py-12 bg-brand-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {productos.map((producto) => (
+          <article class="group bg-white rounded-[--radius-brand] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div class="aspect-[4/3] bg-gradient-to-br from-brand-cream-dark to-brand-cream flex items-center justify-center relative">
+              <span class="text-5xl opacity-30">🍎</span>
+              {producto.destacado && (
+                <span class="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium rounded-full shadow-sm">
+                  ⭐ Destacado
+                </span>
+              )}
+              <span class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-medium rounded-full shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-fresh"></span>
+                {producto.stock} kg
+              </span>
+            </div>
+            <div class="p-4">
+              <span class="text-[10px] font-medium text-brand-terracotta uppercase tracking-wider">{producto.categoria}</span>
+              <h3 class="font-serif text-base font-semibold text-brand-charcoal group-hover:text-brand-red transition-colors mt-1">
+                {producto.nombre}
+              </h3>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-bold text-brand-charcoal">
+                  {producto.precio}
+                  <span class="text-xs font-normal text-brand-charcoal-soft">/{producto.unidad}</span>
+                </span>
+              </div>
+              <button class="mt-3 w-full py-2.5 px-4 bg-brand-red text-white text-sm font-medium rounded-[--radius-button] hover:bg-brand-red-light transition-all cursor-pointer">
+                Agregar al pedido
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

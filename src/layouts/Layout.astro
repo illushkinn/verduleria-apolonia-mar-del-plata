@@ -1,0 +1,179 @@
+---
+import "../styles/global.css";
+import CartBadge from "../components/cart/CartBadge.jsx";
+
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = "Lo mejor de cada estación, en tu mesa. Frutas, verduras y verduras finas en Mar del Plata." } = Astro.props;
+
+const canonicalURL = Astro.url;
+const ogImage = Astro.props.ogImage || "/icons/icon-512.svg";
+---
+
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2D6A4F" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Apolonia" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icons/icon-192.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title} | Apolonia</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-50 bg-brand-cream/90 backdrop-blur-md border-b border-brand-cream-dark">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 no-underline">
+          <span class="font-serif text-2xl font-bold text-brand-red">Apolonia<span class="text-brand-gold">.</span></span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="/catalogo" class="text-sm font-medium text-brand-charcoal-soft hover:text-brand-red transition-colors">
+            Catálogo
+          </a>
+          <a href="/estacion" class="text-sm font-medium text-brand-charcoal-soft hover:text-brand-red transition-colors">
+            Estación
+          </a>
+          <a href="/nosotros" class="text-sm font-medium text-brand-charcoal-soft hover:text-brand-red transition-colors">
+            Nosotros
+          </a>
+          <a
+            href="/carrito"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-brand-terracotta text-white text-sm font-medium rounded-[--radius-button] hover:bg-brand-terracotta-light transition-all"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="21" r="1"/><circle cx="21" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            Pedido
+            <CartBadge client:load />
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-brand-charcoal" aria-label="Menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-red-dark text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Brand -->
+          <div>
+            <span class="font-serif text-xl font-bold">Apolonia<span class="text-brand-gold">.</span></span>
+            <p class="mt-3 text-sm text-white/60 leading-relaxed">
+              Frutería y verdulería de estación en Playa Grande, Mar del Plata. 
+              Lo mejor de cada estación, en tu mesa.
+            </p>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h4 class="font-medium text-sm mb-4 uppercase tracking-wider text-white/40">Navegación</h4>
+            <ul class="space-y-2">
+              <li><a href="/catalogo" class="text-sm text-white/60 hover:text-white transition-colors">Catálogo</a></li>
+              <li><a href="/estacion" class="text-sm text-white/60 hover:text-white transition-colors">Frutas y Verduras de Estación</a></li>
+              <li><a href="/nosotros" class="text-sm text-white/60 hover:text-white transition-colors">Sobre Apolonia</a></li>
+              <li><a href="/carrito" class="text-sm text-white/60 hover:text-white transition-colors">Mi Pedido</a></li>
+            </ul>
+          </div>
+
+          <!-- Contacto -->
+          <div>
+            <h4 class="font-medium text-sm mb-4 uppercase tracking-wider text-white/40">Contacto</h4>
+            <ul class="space-y-2 text-sm text-white/60">
+              <li>Calle Alem, Playa Grande</li>
+              <li>Mar del Plata, Argentina</li>
+              <li>
+                <a href="#" class="text-brand-gold hover:text-brand-gold-light transition-colors">
+                  Pedí por WhatsApp →
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/30">
+          © {new Date().getFullYear()} Apolonia. Todos los derechos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {
+            // SW registration failed — offline support not available
+          });
+        });
+      }
+    </script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          // Simple mobile menu toggle — se expande con CSS si se necesita
+          const nav = document.querySelector('.hidden.md\\:flex');
+          if (nav) {
+            nav.classList.toggle('!flex');
+            nav.classList.toggle('!flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-16');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('right-0');
+            nav.classList.toggle('bg-brand-cream');
+            nav.classList.toggle('p-4');
+            nav.classList.toggle('border-b');
+            nav.classList.toggle('border-brand-cream-dark');
+            nav.classList.toggle('shadow-lg');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

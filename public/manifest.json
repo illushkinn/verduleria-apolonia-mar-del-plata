@@ -1,0 +1,27 @@
+{
+  "name": "Apolonia — Frutería & Verdulería de Estación",
+  "short_name": "Apolonia",
+  "description": "Lo mejor de cada estación, en tu mesa. Frutas, verduras y verduras finas en Mar del Plata.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#9B1D20",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "shopping"],
+  "lang": "es-AR",
+  "scope": "/"
+}

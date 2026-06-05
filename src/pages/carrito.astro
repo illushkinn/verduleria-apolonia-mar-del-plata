@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CartContent from "../components/cart/CartContent.jsx";
+---
+
+<Layout title="Tu Pedido — Apolonia">
+  <!-- Hero mini -->
+  <section class="bg-gradient-to-br from-brand-red-dark to-brand-red py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="font-hand text-brand-gold-light text-lg mb-2 animate-fade-in-up">🛒 Pedido</p>
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-4 animate-fade-in-up" style="animation-delay: 0.1s;">
+        Tu Pedido
+      </h1>
+      <p class="text-white/70 text-lg max-w-xl animate-fade-in-up" style="animation-delay: 0.2s;">
+        Revisá, ajustá y enviá tu pedido por WhatsApp.
+      </p>
+    </div>
+  </section>
+
+  <!-- Full Page Cart -->
+  <section class="py-12 bg-brand-cream min-h-[60vh]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <CartContent client:load />
+    </div>
+  </section>
+</Layout>
