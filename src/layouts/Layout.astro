@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import CartBadge from "../components/cart/CartBadge.jsx";
 import CartToast from "../components/cart/CartToast.jsx";
+import ScrollToTop from "../components/ui/ScrollToTop.jsx";
 import { Analytics } from '@vercel/analytics/react';
 
 export interface Props {
@@ -146,6 +147,9 @@ const ogImage = Astro.props.ogImage || "/icons/icon-512.svg";
 
     <!-- Cart Toast Notification -->
     <CartToast client:load />
+
+    <!-- Scroll to Top Button -->
+    <ScrollToTop client:load />
 
     <!-- Service Worker Registration -->
     <script>
