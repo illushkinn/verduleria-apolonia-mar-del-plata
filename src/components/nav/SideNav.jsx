@@ -44,7 +44,7 @@ export default function SideNav() {
 
         {/* Panel - slides from left with custom easing */}
         <div
-          className={`absolute top-0 left-0 h-full w-72 bg-brand-cream/95 backdrop-blur-xl border-r border-white/20 shadow-2xl
+          className={`absolute top-0 left-0 h-full w-72 bg-brand-cream border-r border-brand-cream-dark shadow-2xl
             transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]
             ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
         >
