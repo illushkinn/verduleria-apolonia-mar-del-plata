@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { List, X } from '@phosphor-icons/react';
+import { List, X, Leaf } from '@phosphor-icons/react';
 
 const NAV_LINKS = [
   { href: '/catalogo', label: 'Catálogo' },
@@ -10,6 +10,8 @@ const NAV_LINKS = [
 
 export default function SideNav() {
   const [isOpen, setIsOpen] = useState(false);
+  // Get current path for active state (client-side only)
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
 
   useEffect(() => {
     if (isOpen) {
@@ -82,22 +84,36 @@ export default function SideNav() {
 
             {/* Nav links */}
             <nav className="px-4 mt-4">
-              {NAV_LINKS.map((link, i) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="block px-4 py-4 text-lg font-medium rounded-xl mb-1"
-                  style={{
-                    color: '#2C2420',
-                    opacity: isOpen ? 1 : 0,
-                    transform: isOpen ? 'translateY(0)' : 'translateY(12px)',
-                    transition: `all 0.3s ease-out ${(i + 1) * 70}ms`,
-                  }}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {NAV_LINKS.map((link, i) => {
+                const isActive = pathname === link.href ||
+                  (link.href !== '/' && pathname.startsWith(link.href));
+                const isEstacion = link.href === '/estacion';
+
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="block px-4 py-4 text-lg font-medium rounded-xl mb-1"
+                    style={{
+                      color: isActive ? '#9B1D20' : '#2C2420',
+                      fontWeight: isActive ? 600 : 500,
+                      opacity: isOpen ? 1 : 0,
+                      transform: isOpen ? 'translateY(0)' : 'translateY(12px)',
+                      transition: `all 0.3s ease-out ${(i + 1) * 70}ms`,
+                      ...(isEstacion && {
+                        borderLeft: isActive ? '3px solid #9B1D20' : '3px solid transparent',
+                        paddingLeft: '13px',
+                      }),
+                    }}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className="flex items-center gap-2">
+                      {isEstacion && <Leaf size={20} weight="bold" style={{ color: '#2D6A4F' }} />}
+                      <span>{link.label}</span>
+                    </div>
+                  </a>
+                );
+              })}
             </nav>
 
             {/* Footer */}
