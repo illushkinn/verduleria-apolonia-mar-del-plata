@@ -37,7 +37,7 @@ export default function SideNav() {
       */}
       {typeof document !== 'undefined' ? createPortal(
         <div
-          className={`fixed inset-0 transition-all duration-300 ease-out ${
+          className={`fixed inset-0 transition-opacity duration-300 ease-out ${
             isOpen ? 'z-50 visible opacity-100' : 'z-0 invisible opacity-0'
           }`}
           style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
@@ -54,13 +54,15 @@ export default function SideNav() {
           <div
             className="absolute top-0 left-0 h-full w-72"
             style={{
-              backgroundColor: 'rgba(253, 251, 247, 0.75)',
+              backgroundColor: 'rgba(253, 251, 247, 0.55)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
               borderRight: '1px solid rgba(245, 240, 232, 0.6)',
               transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
               transition: 'transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
               boxShadow: '4px 0 24px rgba(0,0,0,0.12)',
+              willChange: 'transform, backdrop-filter',
+              WebkitBackfaceVisibility: 'hidden',
             }}
             role="dialog"
             aria-modal="true"
