@@ -60,7 +60,7 @@ export default function FeaturedProductCard({ producto }) {
         </div>
         <button
           onClick={handleAdd}
-          className="mt-4 w-full py-2.5 px-4 bg-brand-red text-white text-sm font-medium rounded-[--radius-button] hover:bg-brand-red-light transition-all cursor-pointer active:scale-[0.98]"
+          className="mt-4 w-full py-3 px-4 bg-brand-red text-white text-base font-medium rounded-[--radius-button] hover:bg-brand-red-light transition-all cursor-pointer active:scale-[0.98]"
         >
           Agregar al pedido
         </button>

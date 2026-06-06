@@ -57,12 +57,20 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-brand-cream);
   color: var(--color-brand-charcoal);
+  font-size: 16px;
   line-height: 1.6;
 }
 
 /* ─── View Transitions API ────────────────── */
 @view-transition {
   navigation: auto;
+}
+
+/* ─── Focus Visible (Keyboard users) ─────── */
+:focus-visible {
+  outline: 2px solid var(--color-brand-red);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* ─── Selection ──────────────────────────── */

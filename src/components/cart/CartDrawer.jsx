@@ -38,13 +38,13 @@ export default function CartDrawer({ open, onClose }) {
               <h2 className="font-serif text-xl font-bold text-brand-red-dark">
                 Tu Pedido
               </h2>
-              <p className="text-xs text-brand-charcoal-soft">
+              <p className="text-sm text-brand-charcoal-soft">
                 {count} {count === 1 ? 'producto' : 'productos'}
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 text-brand-charcoal-soft hover:text-brand-charcoal transition-colors"
+              className="p-3 text-brand-charcoal-soft hover:text-brand-charcoal transition-colors"
               aria-label="Cerrar"
             >
               <X size={20} />
@@ -75,26 +75,26 @@ export default function CartDrawer({ open, onClose }) {
                     <Basket size={24} className="text-brand-charcoal-soft/40" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-brand-charcoal truncate">
+                    <h4 className="text-base font-semibold text-brand-charcoal truncate">
                       {item.nombre}
                     </h4>
-                    <p className="text-xs text-brand-charcoal-soft">
+                    <p className="text-sm text-brand-charcoal-soft">
                       ${item.precio.toLocaleString('es-AR')} / {item.unidad}
                     </p>
                     <div className="flex items-center gap-3 mt-2">
                       <div className="flex items-center border border-brand-cream-dark rounded-lg overflow-hidden bg-white/50">
                         <button
                           onClick={() => updateCantidad(item.id, item.cantidad - 1)}
-                          className="w-7 h-7 flex items-center justify-center text-sm text-brand-charcoal-soft hover:text-brand-charcoal hover:bg-brand-cream-dark transition-colors"
+                          className="w-9 h-9 flex items-center justify-center text-base text-brand-charcoal-soft hover:text-brand-charcoal hover:bg-brand-cream-dark transition-colors"
                         >
                           −
                         </button>
-                        <span className="w-8 text-center text-xs font-medium">
+                        <span className="w-9 text-center text-sm font-medium">
                           {item.cantidad}
                         </span>
                         <button
                           onClick={() => updateCantidad(item.id, item.cantidad + 1)}
-                          className="w-7 h-7 flex items-center justify-center text-sm text-brand-charcoal-soft hover:text-brand-charcoal hover:bg-brand-cream-dark transition-colors"
+                          className="w-9 h-9 flex items-center justify-center text-base text-brand-charcoal-soft hover:text-brand-charcoal hover:bg-brand-cream-dark transition-colors"
                         >
                           +
                         </button>
@@ -102,12 +102,12 @@ export default function CartDrawer({ open, onClose }) {
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-2">
-                    <span className="text-xs font-bold text-brand-charcoal">
+                    <span className="text-sm font-bold text-brand-charcoal">
                       ${(item.precio * item.cantidad).toLocaleString('es-AR')}
                     </span>
                     <button
                       onClick={() => removeItem(item.id)}
-                      className="p-1 text-brand-charcoal-soft/40 hover:text-brand-terracotta transition-colors"
+                      className="p-2 text-brand-charcoal-soft/40 hover:text-brand-terracotta transition-colors"
                       aria-label={`Eliminar ${item.nombre}`}
                     >
                       <Trash size={14} />
@@ -122,12 +122,12 @@ export default function CartDrawer({ open, onClose }) {
           {items.length > 0 && (
             <div className="border-t border-white/10 p-4 space-y-3 bg-white/40 backdrop-blur-sm">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-brand-charcoal-soft">Subtotal</span>
+                <span className="text-base text-brand-charcoal-soft">Subtotal</span>
                 <span className="text-lg font-bold text-brand-charcoal">
                   ${total.toLocaleString('es-AR')}
                 </span>
               </div>
-              <p className="text-xs text-brand-fresh flex items-center gap-1">
+              <p className="text-sm text-brand-fresh flex items-center gap-1">
                 <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor">
                   <path d="M240,136h-8V120a8,8,0,0,0-2.34-5.66l-40-40A8,8,0,0,0,184,72H112a16,16,0,0,0-16,16v16H48a16,16,0,0,0-16,16v48H24a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM184,91.31,212.69,120H184ZM112,88h56v64H112ZM48,120H80v32H48Z"/>
                 </svg>
@@ -140,7 +140,7 @@ export default function CartDrawer({ open, onClose }) {
                 onChange={(e) => setNotas(e.target.value)}
                 placeholder="Dirección, piso, horario preferido, etc."
                 rows={2}
-                className="w-full px-3 py-2 text-xs bg-white/50 backdrop-blur-sm rounded-[--radius-button] border border-white/20 placeholder:text-brand-charcoal-soft/40 focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all resize-none"
+                className="w-full px-3 py-2 text-base bg-white/50 backdrop-blur-sm rounded-[--radius-button] border border-white/20 placeholder:text-brand-charcoal-soft/40 focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all resize-none"
               />
 
               <button
@@ -154,7 +154,7 @@ export default function CartDrawer({ open, onClose }) {
               </button>
               <button
                 onClick={clearCart}
-                className="w-full text-xs text-brand-charcoal-soft/60 hover:text-brand-terracotta transition-colors"
+                className="w-full text-sm text-brand-charcoal-soft/60 hover:text-brand-terracotta transition-colors py-2"
               >
                 Vaciar carrito
               </button>

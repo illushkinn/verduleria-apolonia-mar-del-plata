@@ -24,7 +24,7 @@ export default function SideNav() {
       {/* Hamburger button - mobile only */}
       <button
         onClick={() => setIsOpen(true)}
-        className="md:hidden p-2 text-brand-charcoal hover:text-brand-red transition-colors"
+        className="md:hidden p-3 text-brand-charcoal hover:text-brand-red transition-colors"
         aria-label="Abrir menú"
       >
         <List size={24} weight="bold" />
@@ -53,7 +53,7 @@ export default function SideNav() {
             <span className="font-serif text-xl font-bold text-brand-red">Apolonia</span>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2 text-brand-charcoal hover:text-brand-red transition-colors rounded-lg hover:bg-brand-cream-dark"
+              className="p-3 text-brand-charcoal hover:text-brand-red transition-colors rounded-lg hover:bg-brand-cream-dark"
               aria-label="Cerrar menú"
             >
               <X size={22} weight="bold" />

@@ -54,14 +54,14 @@ export default function CartContent() {
               <div className="flex items-center border border-brand-cream-dark rounded-lg overflow-hidden">
                 <button
                   onClick={() => updateCantidad(item.id, item.cantidad - 1)}
-                  className="w-8 h-8 flex items-center justify-center text-brand-charcoal-soft hover:bg-brand-cream-dark transition-colors"
+                  className="w-10 h-10 flex items-center justify-center text-base text-brand-charcoal-soft hover:bg-brand-cream-dark transition-colors"
                 >
                   −
                 </button>
-                <span className="w-10 text-center text-sm font-medium">{item.cantidad}</span>
+                <span className="w-10 text-center text-base font-medium">{item.cantidad}</span>
                 <button
                   onClick={() => updateCantidad(item.id, item.cantidad + 1)}
-                  className="w-8 h-8 flex items-center justify-center text-brand-charcoal-soft hover:bg-brand-cream-dark transition-colors"
+                  className="w-10 h-10 flex items-center justify-center text-base text-brand-charcoal-soft hover:bg-brand-cream-dark transition-colors"
                 >
                   +
                 </button>
@@ -74,7 +74,7 @@ export default function CartContent() {
             </span>
             <button
               onClick={() => removeItem(item.id)}
-              className="p-1 text-brand-charcoal-soft/40 hover:text-brand-terracotta transition-colors"
+              className="p-2 text-brand-charcoal-soft/40 hover:text-brand-terracotta transition-colors"
               aria-label="Eliminar"
             >
               <Trash size={16} />
@@ -115,7 +115,7 @@ export default function CartContent() {
 
         <button
           onClick={clearCart}
-          className="w-full mt-3 text-sm text-brand-charcoal-soft/50 hover:text-brand-terracotta transition-colors"
+          className="w-full mt-3 text-sm text-brand-charcoal-soft/50 hover:text-brand-terracotta transition-colors py-2"
         >
           Vaciar carrito
         </button>

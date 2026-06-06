@@ -29,13 +29,13 @@ export default function ProductCard({ producto, destacado }) {
             <span>Destacado</span>
           </span>
         )}
-        <span className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-medium rounded-full shadow-sm">
+        <span className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium rounded-full shadow-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-fresh"></span>
           {producto.stock || '—'} kg
         </span>
       </div>
       <div className="p-4">
-        <span className="text-[10px] font-medium text-brand-terracotta uppercase tracking-wider">{producto.categoria}</span>
+        <span className="text-xs font-medium text-brand-terracotta uppercase tracking-wider">{producto.categoria}</span>
         <h3 className="font-serif text-base font-semibold text-brand-charcoal group-hover:text-brand-red transition-colors mt-1">
           {producto.nombre}
         </h3>
@@ -53,7 +53,7 @@ export default function ProductCard({ producto, destacado }) {
         </div>
         <button
           onClick={handleAdd}
-          className="mt-3 w-full py-2.5 px-4 bg-brand-red text-white text-sm font-medium rounded-[--radius-button] hover:bg-brand-red-light transition-all cursor-pointer active:scale-[0.98]"
+          className="mt-3 w-full py-3 px-4 bg-brand-red text-white text-base font-medium rounded-[--radius-button] hover:bg-brand-red-light transition-all cursor-pointer active:scale-[0.98]"
         >
           Agregar al pedido
         </button>

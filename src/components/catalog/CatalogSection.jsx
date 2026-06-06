@@ -49,7 +49,7 @@ export default function CatalogSection({ productos }) {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 text-sm font-medium rounded-full border transition-all cursor-pointer ${
+                className={`px-4 py-3 text-sm font-medium rounded-full border transition-all cursor-pointer ${
                   activeCategory === cat
                     ? 'bg-brand-red text-white border-brand-red shadow-sm'
                     : 'border-brand-cream-dark text-brand-charcoal-soft hover:border-brand-red hover:text-brand-red'
@@ -72,12 +72,13 @@ export default function CatalogSection({ productos }) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Buscá tu fruta o verdura..."
-              className="w-full pl-10 pr-10 py-3 bg-brand-cream rounded-[--radius-button] border border-brand-cream-dark text-sm placeholder:text-brand-charcoal-soft/50 focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all"
+              className="w-full pl-10 pr-10 py-3 bg-brand-cream rounded-[--radius-button] border border-brand-cream-dark text-base placeholder:text-brand-charcoal-soft/50 focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-charcoal-soft/40 hover:text-brand-charcoal transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-brand-charcoal-soft/40 hover:text-brand-charcoal transition-colors"
+                aria-label="Limpiar búsqueda"
               >
                 <X size={16} weight="bold" />
               </button>
@@ -111,7 +112,7 @@ export default function CatalogSection({ productos }) {
                   setActiveCategory('Todas');
                   setSearchQuery('');
                 }}
-                className="mt-4 px-4 py-2 text-sm text-brand-red hover:text-brand-red-light transition-colors"
+                className="mt-4 px-4 py-3 text-sm text-brand-red hover:text-brand-red-light transition-colors"
               >
                 Limpiar filtros
               </button>

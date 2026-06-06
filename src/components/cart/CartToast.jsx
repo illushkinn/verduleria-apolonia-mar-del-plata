@@ -22,10 +22,10 @@ export default function CartToast() {
           <CheckCircle size={24} className="text-brand-fresh" weight="fill" />
         </div>
         <div className="flex-1">
-          <p className="text-sm font-semibold text-brand-charcoal">Agregado al pedido</p>
-          <p className="text-xs text-brand-charcoal-soft truncate">{toast.productName}</p>
+          <p className="text-base font-semibold text-brand-charcoal">Agregado al pedido</p>
+          <p className="text-sm text-brand-charcoal-soft truncate">{toast.productName}</p>
         </div>
-        <button onClick={hideToast} className="p-1 text-brand-charcoal-soft/40 hover:text-brand-charcoal transition-colors">
+        <button onClick={hideToast} className="p-3 text-brand-charcoal-soft/40 hover:text-brand-charcoal transition-colors" aria-label="Cerrar notificación">
           <X size={16} />
         </button>
       </div>
