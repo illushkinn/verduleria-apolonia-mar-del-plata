@@ -54,8 +54,10 @@ export default function SideNav() {
           <div
             className="absolute top-0 left-0 h-full w-72"
             style={{
-              backgroundColor: '#FDFBF7',
-              borderRight: '1px solid #F5F0E8',
+              backgroundColor: 'rgba(253, 251, 247, 0.75)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              borderRight: '1px solid rgba(245, 240, 232, 0.6)',
               transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
               transition: 'transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
               boxShadow: '4px 0 24px rgba(0,0,0,0.12)',
@@ -65,10 +67,7 @@ export default function SideNav() {
             aria-label="Menú de navegación"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 pt-6 pb-2">
-              <span className="font-serif text-xl font-bold" style={{ color: '#9B1D20' }}>
-                Apolonia
-              </span>
+            <div className="flex items-center justify-end px-6 pt-6 pb-2">
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-3 rounded-lg"
