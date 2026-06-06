@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { List, X, Leaf } from '@phosphor-icons/react';
+import { List, X } from '@phosphor-icons/react';
 
 const NAV_LINKS = [
   { href: '/catalogo', label: 'Catálogo' },
@@ -107,10 +107,7 @@ export default function SideNav() {
                     }}
                     onClick={() => setIsOpen(false)}
                   >
-                    <div className="flex items-center gap-2">
-                      {isEstacion && <Leaf size={20} weight="bold" style={{ color: '#2D6A4F' }} />}
-                      <span>{link.label}</span>
-                    </div>
+                    {link.label}
                   </a>
                 );
               })}
