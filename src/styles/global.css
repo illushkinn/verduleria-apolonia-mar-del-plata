@@ -145,6 +145,16 @@ body {
   transition-duration: 400ms;
 }
 
+/* Side nav panel slide-in animation */
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* ─── Utility: line clamp ───────────────── ─ */
 .line-clamp-2 {
   display: -webkit-box;
